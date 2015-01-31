@@ -1,21 +1,26 @@
 tmp
 ===
 
-This branch has code for interfacing with CMU Sphinx.
+The project provides an assistive system for people with hearing disability. Along with speech recognition, the user gets information about different auditory events happening around in the environment which completes the experience of a sound sensing unit.
 
-*Will be merged eventually with master.*
+### Structure
 
-###Structure
+The project has various modules explained below.
 
-- `/res` contains static resources like language model and dictionaries for Sphinx.
-- `/src` contains the source
-- `/tests` contains unit tests
+#### Speech Recognition
+This functionality is implemented using CMU Sphinx.
 
-###Plan
+#### Direction Detection
+This module provides information about the *crude* direction of sound. Right now, the idea is to use analog comparator and find left or right direction.
 
-The idea is to have a program that monitors microphone for *hotwords* and fires actions based on the interpretation of the sentence, most of the time which will be a speech-to-text display. This will mostly need a nice integration of simple python scripts with pocketSphinx with a bit of language model tuning.
+#### Anomaly Detection
+This module detects anomalous auditory events like knock on doors, car horns etc. The system adapts according to recent sound data and thus doesn't need tuning or extra efforts.
 
-Next in queue is firing analysis threads on the audio signals to perform event detection on non-speech audio. This part will need experimentation on various methods and finally implementing in (fast) native code using C++ or using the inbuilt DSP of beagle.
+#### Event Detection
+This allows the system to provide information about what (in linguistic terms) is happening around. For example, clapping, drum beats etc. This system can be trained to suite the purpose.
+
+#### Dashboard
+Finally, a dashboard will be there for displaying the notifications.
 
 ![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)
 
