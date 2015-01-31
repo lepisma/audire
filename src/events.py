@@ -6,7 +6,6 @@ import pyaudio
 import numpy as np
 from array import array
 from sys import byteorder
-from struct import pack
 
 THRESHOLD = 500
 CHUNK = 1000
@@ -56,8 +55,6 @@ def get_clip(stream):
     audio_started = False
     data = array("h")
 
-    print("Starting . . . ")
-
     while True:
         chunk = array("h", stream.read(CHUNK))
         if byteorder == "big":
@@ -76,26 +73,7 @@ def get_clip(stream):
             print("Audio started.")
 
         if audio_started and num_silent > 10:
-            print("Fin.")
+            print("Done.")
             break
 
     return trim(data)
-
-
-# Main program
-
-p = pyaudio.PyAudio()
-
-stream = p.open(format=FORMAT,
-                channels=CHANNELS,
-                rate=RATE,
-                input=True,
-                frames_per_buffer=CHUNK)
-
-data = get_clip(stream)
-data_bytes = pack("<" + ("h" * len(data)), *data)
-
-
-stream.stop_stream()
-stream.close()
-p.terminate()
