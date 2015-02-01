@@ -1,1 +1,35 @@
 /* Custom things */
+
+.direction .inner {
+  text-align: center;
+  padding: 40px;
+}
+
+.event-img {
+  width: 100%;
+}
+
+.tab-content {
+  padding-top: 50px !important;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.event-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#events, #events img, #events .carousel-desc {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#messages h3 {
+  color: gray;
+}
+
+#history h4 {
+  color: rgb(112, 200, 177);
+}
