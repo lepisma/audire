@@ -1,7 +1,7 @@
-tmp
-===
+audire
+======
 
-The project provides an assistive system for people with hearing disability. Along with speech recognition, the user gets information about different auditory events happening around in the environment which completes the experience of a sound sensing unit.
+Audire provides an assistive system for people with hearing disability. Along with speech recognition, the user gets information about different auditory events happening around in the environment which completes the experience of a sound sensing unit.
 
 ### Structure
 

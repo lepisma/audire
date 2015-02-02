@@ -8,7 +8,7 @@ Bootup script
 import argparse
 from src.display import Display
 
-parser = argparse.ArgumentParser(description="Tmp is a voice assistance for people with hearing disability")
+parser = argparse.ArgumentParser(description="Audire is a voice assistance for people with hearing disability")
 
 parser.add_argument("-d",
                     "--diagnose",
