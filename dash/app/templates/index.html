@@ -5,8 +5,13 @@
     <div class="col-sm-12">
       <div id="topmenu">
         <ul class="dropdown clearfix boxed">
-          <li class="menu-level-0 last">
+          <li class="menu-level-0 first">
             <a href="#" hidefocus="true">
+              Audire
+            </a>
+          </li>
+          <li class="menu-level-0 last pull-right">
+            <a href="#" hidefocus="true" id="settings-btn">
               <i class="icon-menu icon-menu4"></i>
               <span>Settings</span>
             </a>
@@ -89,25 +94,55 @@
         <div class="tab-content boxed clearfix">    
           <div class="tab-pane fade in active" id="events">
             <a href="#" class="btn btn-small btn-green event-btn"><span>Check event</span></a>
-              <img src="{{ url_for('static', filename='images/temp/music-player4.jpg') }}" class="event-img">
-              <div class="carousel-desc">
-                <span>Wild Deer</span>
-              </div>
+            <img src="{{ url_for('static', filename='images/temp/music-player4.jpg') }}" class="event-img">
+            <div class="carousel-desc">
+              <span>Wild Deer</span>
+            </div>
           </div>
           <div class="tab-pane fade" id="level">
-            <ul class="stats-data clearfix">
-              <li>
-                <a href="#"><span>audio</span><strong>55%</strong></a>
-              </li>
-              <li class="red">
-                <a href="#"><span>video</span><strong>23%</strong></a>
-              </li>
-              <li class="yellow">
-                <a href="#"><span>photo</span><strong>17%</strong></a>
-              </li>
-            </ul>
+            
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="overlay">
+  <div class="content" id="setting-pane">
+    <div class="row">
+      <div class="col-md-4">
+        
+      </div>
+      <div class="col-md-4">
+        <div class="widget-container boxed">
+          <h3 class="widget-title">Audire Settings</h3>
+          <div class="inner input_styled">
+            <h5>
+              Switch modules ON for OFF
+            </h5>
+            <div class="rowCheckbox checkbox-large checkbox-white">
+              <input name="speech-btn" type="checkbox" id="speech-btn" value="speech-btn" checked>
+              <label for="speech-btn">Speech to text</label>
+            </div>
+            <div class="rowCheckbox checkbox-large checkbox-white">
+              <input name="events-btn" type="checkbox" id="events-btn" value="events-btn" checked>
+              <label for="events-btn">Events module</label>
+            </div>
+            <div class="rowCheckbox checkbox-large checkbox-white">
+              <input name="anomaly-btn" type="checkbox" id="anomaly-btn" value="anomaly-btn" checked>
+              <label for="anomaly-btn">Anomaly module</label>
+            </div>
+            <div class="rowCheckbox checkbox-large checkbox-white">
+              <input name="direction-btn" type="checkbox" id="direction-btn" value="direction-btn" checked>
+              <label for="direction-btn">Direction module</label>
+            </div>
+            <a href="#" class="btn btn-small btn-red" id="overlay-close-btn"><span>Close</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        
       </div>
     </div>
   </div>
