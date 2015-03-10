@@ -1,150 +1,194 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="content" role="main">
-  <div class="row">
-    <div class="col-sm-12">
-      <div id="topmenu">
-        <ul class="dropdown clearfix boxed">
-          <li class="menu-level-0 first">
-            <a href="#" hidefocus="true">
-              Audire
-            </a>
-          </li>
-          <li class="menu-level-0 last pull-right">
-            <a href="#" hidefocus="true" id="settings-btn">
-              <i class="icon-menu icon-menu4"></i>
-              <span>Settings</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="tabs_framed styled">
-        <ul class="tabs clearfix tab_id2 bookmarks3 active_bookmark1">
-          <li class="first active"><a href="#messages" data-toggle="tab" hidefocus="true">Messages</a></li>
-          <li class=""><a href="#history" data-toggle="tab" hidefocus="true">History</a></li>
-        </ul>
-    
-        <div class="tab-content boxed clearfix">
-          <div class="tab-pane fade active in" id="messages">
-            <div class="inner clearfix">
-              <h2>I am a live message. I am here because someone spelled me.</h2>
-              <hr>
-              <h3>This is an older message</h3>
-              <h3>A few sentences of text will be displayed here for reference.</h3>
-              <h3>For older text, see history tab.</h3>
-            </div>
-            <div class="bottom clearfix">
-              <h3>Live speech</h3>
-              <p>You can read what people are saying right here.</p>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="history">
-            <div class="inner clearfix">
-              <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-              <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-              <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-            </div>
-           
-            <div class="bottom clearfix">
-              <h3>Message history</h3>
-              <p>You can see history of recent conversations here.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="widget-container direction boxed">
-        <h3 class="widget-title">Audio Direction</h3>
-        <div class="inner">
-          <a href="#" class="btn btn-left disabled" id="left-btn"><span></span></a>
-          <a href="#" class="btn btn-right disabled" id="right-btn"><span></span></a>
-        </div>
-      </div>
-      <div class="tabs_framed styled widget-stats">
-        <ul class="tabs clearfix">
-          <li class="active">
-            <a href="#events" data-toggle="tab">Events</a>
-          </li>
-          <li>
-            <a href="#level" data-toggle="tab">Audio Level</a>
-          </li>
-        </ul>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+      <head>
+        <meta charset="utf-8">
+        <meta name="author" content="lepisma">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Dash | Audire</title>
 
-        <div class="tab-content boxed clearfix">    
-          <div class="tab-pane fade in active" id="events">
-            <a href="#" class="btn btn-small btn-green event-btn"><span>Check event</span></a>
-            <img src="{{ url_for('static', filename='images/temp/music-player4.jpg') }}" class="event-img">
-            <div class="carousel-desc">
-              <span>Wild Deer</span>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="level">
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- main JS libs -->
+        <script src="{{ static_url('js/libs/modernizr.min.js') }}"></script>
+        <script src="{{ static_url('js/libs/jquery-1.10.0.js') }}"></script>
+        <script src="{{ static_url('js/libs/jquery-ui.min.js') }}"></script>
+        <script src="{{ static_url('js/libs/bootstrap.min.js') }}"></script>
+        <script src="{{ static_url('js/jquery.customInput.js') }}"></script>
+        
+        <!-- Style CSS -->
+        <link href="{{ static_url('css/bootstrap.css') }}" media="screen" rel="stylesheet">
+        <link href="{{ static_url('css/style.css') }}" media="screen" rel="stylesheet">
+        
+        <!-- scripts -->
+        <script src="{{ static_url('js/general.js') }}"></script>
+        
+        <!-- Include all needed stylesheets and scripts here -->
 
-<div id="overlay">
-  <div class="content" id="setting-pane">
-    <div class="row">
-      <div class="col-md-4">
-        
-      </div>
-      <div class="col-md-4">
-        <div class="widget-container boxed">
-          <h3 class="widget-title">Audire Settings</h3>
-          <div class="inner input_styled">
-            <h5>
-              Switch modules ON or OFF
-            </h5>
-            <div class="rowCheckbox checkbox-large checkbox-white">
-              <input name="speech-btn" type="checkbox" id="speech-btn" value="speech-btn" checked>
-              <label for="speech-btn">Speech to text</label>
+        <script src="{{ static_url('js/main.js') }}"></script>
+        <link href="{{ static_url('css/main.css') }}" rel="stylesheet" media="screen">
+
+        <!--[if lt IE 9]><script src={{ static_url('js/respond.min.js') }}></script><![endif]-->
+        <!--[if gte IE 9]>
+            <style type="text/css">
+              .gradient {filter: none !important;}
+            </style>
+            <![endif]-->
+      </head>
+      
+      <body>
+        <!-- container -->
+        <div class="container container-wide">
+          <div class="content" role="main">
+            <div class="row">
+              <div class="col-sm-12">
+                <div id="topmenu">
+                  <ul class="dropdown clearfix boxed">
+                    <li class="menu-level-0 first">
+                      <a href="#" hidefocus="true">
+                        Audire
+                      </a>
+                    </li>
+                    <li class="menu-level-0 last pull-right">
+                      <a href="#" hidefocus="true" id="settings-btn">
+                        <i class="icon-menu icon-menu4"></i>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="rowCheckbox checkbox-large checkbox-white">
-              <input name="events-btn" type="checkbox" id="events-btn" value="events-btn" checked>
-              <label for="events-btn">Events module</label>
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="tabs_framed styled">
+                  <ul class="tabs clearfix tab_id2 bookmarks3 active_bookmark1">
+                    <li class="first active"><a href="#messages" data-toggle="tab" hidefocus="true">Messages</a></li>
+                    <li class=""><a href="#history" data-toggle="tab" hidefocus="true">History</a></li>
+                  </ul>
+                  
+                  <div class="tab-content boxed clearfix">
+                    <div class="tab-pane fade active in" id="messages">
+                      <div class="inner clearfix">
+                        <h2>I am a live message. I am here because someone spelled me.</h2>
+                        <hr>
+                        <h3>This is an older message</h3>
+                        <h3>A few sentences of text will be displayed here for reference.</h3>
+                        <h3>For older text, see history tab.</h3>
+                      </div>
+                      <div class="bottom clearfix">
+                        <h3>Live speech</h3>
+                        <p>You can read what people are saying right here.</p>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="history">
+                      <div class="inner clearfix">
+                        <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
+                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
+                      </div>
+                      
+                      <div class="bottom clearfix">
+                        <h3>Message history</h3>
+                        <p>You can see history of recent conversations here.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget-container direction boxed">
+                  <h3 class="widget-title">Audio Direction</h3>
+                  <div class="inner">
+                    <a href="#" class="btn btn-left disabled" id="left-btn"><span></span></a>
+                    <a href="#" class="btn btn-right disabled" id="right-btn"><span></span></a>
+                  </div>
+                </div>
+                <div class="tabs_framed styled widget-stats">
+                  <ul class="tabs clearfix">
+                    <li class="active">
+                      <a href="#events" data-toggle="tab">Events</a>
+                    </li>
+                    <li>
+                      <a href="#level" data-toggle="tab">Audio Level</a>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content boxed clearfix">    
+                    <div class="tab-pane fade in active" id="events">
+                      <a href="#" class="btn btn-small btn-green event-btn"><span>Check event</span></a>
+                      <img src="{{ static_url("images/temp/music-player4.jpg") }}" class="event-img">
+                      <div class="carousel-desc">
+                        <span>Wild Deer</span>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="level">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="rowCheckbox checkbox-large checkbox-white">
-              <input name="anomaly-btn" type="checkbox" id="anomaly-btn" value="anomaly-btn" checked>
-              <label for="anomaly-btn">Anomaly module</label>
+          </div>
+
+          <div id="overlay">
+            <div class="content" id="setting-pane">
+              <div class="row">
+                <div class="col-md-4">
+                  
+                </div>
+                <div class="col-md-4">
+                  <div class="widget-container boxed">
+                    <h3 class="widget-title">Audire Settings</h3>
+                    <div class="inner input_styled">
+                      <h5>
+                        Switch modules ON or OFF
+                      </h5>
+                      <div class="rowCheckbox checkbox-large checkbox-white">
+                        <input name="speech-btn" type="checkbox" id="speech-btn" value="speech-btn" checked>
+                        <label for="speech-btn">Speech to text</label>
+                      </div>
+                      <div class="rowCheckbox checkbox-large checkbox-white">
+                        <input name="events-btn" type="checkbox" id="events-btn" value="events-btn" checked>
+                        <label for="events-btn">Events module</label>
+                      </div>
+                      <div class="rowCheckbox checkbox-large checkbox-white">
+                        <input name="anomaly-btn" type="checkbox" id="anomaly-btn" value="anomaly-btn" checked>
+                        <label for="anomaly-btn">Anomaly module</label>
+                      </div>
+                      <div class="rowCheckbox checkbox-large checkbox-white">
+                        <input name="direction-btn" type="checkbox" id="direction-btn" value="direction-btn" checked>
+                        <label for="direction-btn">Direction module</label>
+                      </div>
+                      <a href="#" class="btn btn-small btn-red" id="overlay-close-btn"><span>Close</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  
+                </div>
+              </div>
             </div>
-            <div class="rowCheckbox checkbox-large checkbox-white">
-              <input name="direction-btn" type="checkbox" id="direction-btn" value="direction-btn" checked>
-              <label for="direction-btn">Direction module</label>
-            </div>
-            <a href="#" class="btn btn-small btn-red" id="overlay-close-btn"><span>Close</span></a>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock %}
+        <!--/ container -->
+      </body>
+</html>
+
