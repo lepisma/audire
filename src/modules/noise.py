@@ -12,6 +12,8 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 
+level = 0
+
 p = pyaudio.PyAudio()
 
 stream = p.open(format=FORMAT,
@@ -20,11 +22,14 @@ stream = p.open(format=FORMAT,
                 input=True,
                 frames_per_buffer=CHUNK)
 
-while True:
-    snd_data = array("h", stream.read(CHUNK))
-    print np.mean(np.array(snd_data))
-    time.sleep(0.1)
 
-stream.stop_stream()
-stream.close()
-p.terminate()
+def noise_level():
+    global level
+    while True:
+        snd_data = array("h", stream.read(CHUNK))
+        level = np.abs(np.mean(np.array(snd_data)))
+        time.sleep(0.1)
+    
+    stream.stop_stream()
+    stream.close()
+    p.terminate()

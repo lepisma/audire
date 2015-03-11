@@ -4,8 +4,11 @@ Audio event detection module
 
 import pyaudio
 import numpy as np
+import cPickle
 from array import array
 from sys import byteorder
+from classify import preprocess
+import os
 
 THRESHOLD = 500
 CHUNK = 1000
@@ -13,6 +16,25 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 
+p = pyaudio.PyAudio()
+stream = p.open(format=FORMAT,
+                channels=CHANNELS,
+                rate=RATE,
+                input=True,
+                frames_per_buffer=CHUNK)
+
+try:
+    classifier = cPickle.load(open(os.path.join(
+        os.path.dirname(__file__), "model.pkl"),
+                                   "r"))
+    events = cPickle.load(open(os.path.join(
+        os.path.dirname(__file__), "events.pkl"),
+                                   "r"))
+except IOError:
+    print("Trained models not found")
+    print("If you are NOT training, please resolve this issue.")
+    pass
+    
 
 def is_silent(chunk):
     """
@@ -77,3 +99,11 @@ def get_clip(stream):
             break
 
     return trim(data)
+
+
+def get_event():
+    """Return event name
+    """
+    data = get_clip(stream)
+    class_id = classifier.predict(preprocess(data, RATE))
+    return events[class_id]

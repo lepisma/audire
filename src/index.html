@@ -28,6 +28,8 @@
 
         <script src="{{ static_url('js/main.js') }}"></script>
         <link href="{{ static_url('css/main.css') }}" rel="stylesheet" media="screen">
+        <script src="{{ static_url('js/highcharts.js') }}"></script>
+        <script src="{{ static_url('js/exporting.js') }}"></script>
 
         <!--[if lt IE 9]><script src={{ static_url('js/respond.min.js') }}></script><![endif]-->
         <!--[if gte IE 9]>
@@ -71,11 +73,11 @@
                   <div class="tab-content boxed clearfix">
                     <div class="tab-pane fade active in" id="messages">
                       <div class="inner clearfix">
-                        <h2>I am a live message. I am here because someone spelled me.</h2>
+                        <h2></h2>
                         <hr>
-                        <h3>This is an older message</h3>
-                        <h3>A few sentences of text will be displayed here for reference.</h3>
-                        <h3>For older text, see history tab.</h3>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
                       </div>
                       <div class="bottom clearfix">
                         <h3>Live speech</h3>
@@ -84,25 +86,6 @@
                     </div>
                     <div class="tab-pane fade" id="history">
                       <div class="inner clearfix">
-                        <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Hey, how are you ? <span class="pull-right">00:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
-                        <h4>Project Audire  working fine ? <span class="pull-right">05:00</span></h4>
-                        <h4>Thats great news ! <span class="pull-right">05:30</span></h4>
                       </div>
                       
                       <div class="bottom clearfix">
@@ -114,34 +97,42 @@
                 </div>
               </div>
               <div class="col-sm-4">
+                <div class="tabs_framed styled widget-stats">
+                  <ul class="tabs clearfix">
+                    <li class="active">
+                      <a href="#level" data-toggle="tab">Audio Level</a>
+                    </li>
+                    <li>
+                      <a href="#events" data-toggle="tab">Events</a>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content boxed clearfix">
+                    <div class="tab-pane fade in active" id="level">
+                      <div id="level-graph"></div>
+                      <div id="info-pane">
+                        Anomaly
+                      </div>
+                    </div>    
+                    <div class="tab-pane fade" id="events">
+                      <div id="event-control">
+                        <img id="event-loading" src="{{ static_url('images/loading.gif') }}">
+                        <a href="#" class="btn btn-small btn-green event-btn"><span>Check event</span></a>
+                      </div>
+                      <div>
+                        <img id="event-img" src="{{ static_url('images/events/na.jpg') }}" class="event-img">
+                        <div class="carousel-desc">
+                          <span>na</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="widget-container direction boxed">
                   <h3 class="widget-title">Audio Direction</h3>
                   <div class="inner">
                     <a href="#" class="btn btn-left disabled" id="left-btn"><span></span></a>
                     <a href="#" class="btn btn-right disabled" id="right-btn"><span></span></a>
-                  </div>
-                </div>
-                <div class="tabs_framed styled widget-stats">
-                  <ul class="tabs clearfix">
-                    <li class="active">
-                      <a href="#events" data-toggle="tab">Events</a>
-                    </li>
-                    <li>
-                      <a href="#level" data-toggle="tab">Audio Level</a>
-                    </li>
-                  </ul>
-
-                  <div class="tab-content boxed clearfix">    
-                    <div class="tab-pane fade in active" id="events">
-                      <a href="#" class="btn btn-small btn-green event-btn"><span>Check event</span></a>
-                      <img src="{{ static_url("images/temp/music-player4.jpg") }}" class="event-img">
-                      <div class="carousel-desc">
-                        <span>Wild Deer</span>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="level">
-                      
-                    </div>
                   </div>
                 </div>
               </div>
@@ -162,20 +153,20 @@
                         Switch modules ON or OFF
                       </h5>
                       <div class="rowCheckbox checkbox-large checkbox-white">
-                        <input name="speech-btn" type="checkbox" id="speech-btn" value="speech-btn" checked>
-                        <label for="speech-btn">Speech to text</label>
+                        <input name="speech-switch" type="checkbox" id="speech-switch" value="speech-switch" checked>
+                        <label for="speech-switch">Speech to text</label>
                       </div>
                       <div class="rowCheckbox checkbox-large checkbox-white">
-                        <input name="events-btn" type="checkbox" id="events-btn" value="events-btn" checked>
-                        <label for="events-btn">Events module</label>
+                        <input name="event-switch" type="checkbox" id="event-switch" value="event-switch" checked>
+                        <label for="event-switch">Events module</label>
                       </div>
                       <div class="rowCheckbox checkbox-large checkbox-white">
-                        <input name="anomaly-btn" type="checkbox" id="anomaly-btn" value="anomaly-btn" checked>
-                        <label for="anomaly-btn">Anomaly module</label>
+                        <input name="anomaly-switch" type="checkbox" id="anomaly-switch" value="anomaly-switch" checked>
+                        <label for="anomaly-switch">Anomaly module</label>
                       </div>
                       <div class="rowCheckbox checkbox-large checkbox-white">
-                        <input name="direction-btn" type="checkbox" id="direction-btn" value="direction-btn" checked>
-                        <label for="direction-btn">Direction module</label>
+                        <input name="direction-switch" type="checkbox" id="direction-switch" value="direction-switch" disabled>
+                        <label for="direction-switch">Direction module</label>
                       </div>
                       <a href="#" class="btn btn-small btn-red" id="overlay-close-btn"><span>Close</span></a>
                     </div>

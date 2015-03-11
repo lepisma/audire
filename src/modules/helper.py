@@ -2,20 +2,14 @@
 Helper functions for training event classifier
 """
 
-from events import *
-import pyaudio
+import event
+from classify import train, preprocess
+import cPickle
+
 
 def record_events():
     """Record events and return a list of data with class number.
     """
-
-    p = pyaudio.PyAudio()
-
-    stream = p.open(format=FORMAT,
-                    channels=CHANNELS,
-                    rate=RATE,
-                    input=True,
-                    frames_per_buffer=CHUNK)
 
     names = []
     data = []
@@ -30,14 +24,24 @@ def record_events():
         iter = int(raw_input("Enter the number of samples for this class: "))
         for _ in range(iter):
             print("Taking sample #" + str(_ + 1))
-            audio = get_clip(stream)
-            data.append(audio)
+            audio = event.get_clip(event.stream)
+            data.append(preprocess(audio, event.RATE))
             target.append(target_id)
         print("")
         target_id += 1
     
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
+    event.stream.stop_stream()
+    event.stream.close()
+    event.p.terminate()
 
-    return [data, target, names]
+    print("Training classifier")
+    classifier = train(data, target)
+    print("Training done, dumping data")
+    cPickle.dump(names, open("events.pkl", "w"))
+    cPickle.dump(classifier, open("model.pkl", "w"))
+    cPickle.dump([data, target], open("data.pkl", "w"))
+    print("All done.")
+
+    
+if __name__ == "__main__":
+    record_events()
