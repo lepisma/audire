@@ -233,6 +233,6 @@ var addToHistory = function(message){
 var updateEvent = function(event){
     // Update the event text and image
     $("#events .carousel-desc > span").text(event);
-    // var imgUrl = "/static/images/events/" + event + ".jpg";
-    // $("#event-img").attr("src", imgUrl);
+    var imgUrl = "/static/images/events/" + event + ".jpg";
+    $("#event-img").attr("src", imgUrl);
 }
