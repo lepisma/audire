@@ -77,7 +77,9 @@ def get_clip(stream):
     audio_started = False
     data = array("h")
 
+    count = 0
     while True:
+        count += 1
         chunk = array("h", stream.read(CHUNK))
         if byteorder == "big":
             chunk.byteswap()
@@ -96,6 +98,9 @@ def get_clip(stream):
 
         if audio_started and num_silent > 10:
             print("Done.")
+            break
+        if count > 132:
+            print("Done. Time exceeded.")
             break
 
     return trim(data)

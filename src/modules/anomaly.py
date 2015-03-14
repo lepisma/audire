@@ -40,7 +40,7 @@ def anomaly_detection(websocket_handler):
         data = np.array(chunk)
         chunk_mean = np.mean(np.abs(data))
 
-        if np.abs(chunk_mean - window_mean) > (2 * np.sqrt(window_var)):
+        if (chunk_mean - window_mean) > (3 * np.sqrt(window_var)):
             if previous_state == 0:
                 websocket_handler.write_message("anomaly:1")
                 previous_state = 1
