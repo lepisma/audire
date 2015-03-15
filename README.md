@@ -32,6 +32,21 @@ This system works by extracting Mel Frequency Cepstrum Coefficients (MFCC) of in
 #### User Interface
 The user interface communicates with the backend using ajax queries and websocket connection that interacts with a server written using tornado, and displays all necessary information to the user.
 
+### Setup
+
+Dependencies are in `requirements`.
+
+```
+pip install -r requirements
+```
+
+Run the server and go to [http://localhost:5000/](http://localhost:5000/)
+
+```
+cd src
+python server.py
+```
+
 ![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)
 
 © NebulaX TIIC 2015
